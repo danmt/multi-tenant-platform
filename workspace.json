@@ -1,10 +1,186 @@
 {
-  
-  
   "version": 2,
-  
-  "projects": {},
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
-  }
+  "projects": {
+    "first-tenant": {
+      "projectType": "application",
+      "root": "apps/first-tenant",
+      "sourceRoot": "apps/first-tenant/src",
+      "prefix": "t1",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/first-tenant",
+            "index": "apps/first-tenant/src/index.html",
+            "main": "apps/first-tenant/src/main.ts",
+            "polyfills": "apps/first-tenant/src/polyfills.ts",
+            "tsConfig": "apps/first-tenant/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/first-tenant/src/favicon.ico",
+              "apps/first-tenant/src/assets"
+            ],
+            "styles": ["apps/first-tenant/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/first-tenant/src/environments/environment.ts",
+                  "with": "apps/first-tenant/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": { "browserTarget": "first-tenant:build" },
+          "configurations": {
+            "production": { "browserTarget": "first-tenant:build:production" }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": { "browserTarget": "first-tenant:build" }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/first-tenant/src/**/*.ts",
+              "apps/first-tenant/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/first-tenant"],
+          "options": {
+            "jestConfig": "apps/first-tenant/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "second-tenant": {
+      "projectType": "application",
+      "root": "apps/second-tenant",
+      "sourceRoot": "apps/second-tenant/src",
+      "prefix": "t2",
+      "targets": {
+        "build": {
+          "executor": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/second-tenant",
+            "index": "apps/second-tenant/src/index.html",
+            "main": "apps/second-tenant/src/main.ts",
+            "polyfills": "apps/second-tenant/src/polyfills.ts",
+            "tsConfig": "apps/second-tenant/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/second-tenant/src/favicon.ico",
+              "apps/second-tenant/src/assets"
+            ],
+            "styles": ["apps/second-tenant/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/second-tenant/src/environments/environment.ts",
+                  "with": "apps/second-tenant/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@angular-devkit/build-angular:dev-server",
+          "options": { "browserTarget": "second-tenant:build" },
+          "configurations": {
+            "production": { "browserTarget": "second-tenant:build:production" }
+          }
+        },
+        "extract-i18n": {
+          "executor": "@angular-devkit/build-angular:extract-i18n",
+          "options": { "browserTarget": "second-tenant:build" }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/second-tenant/src/**/*.ts",
+              "apps/second-tenant/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/second-tenant"],
+          "options": {
+            "jestConfig": "apps/second-tenant/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": { "defaultCollection": "@nrwl/angular" },
+  "generators": {
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress",
+      "strict": true
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": { "style": "scss" }
+  },
+  "defaultProject": "first-tenant"
 }

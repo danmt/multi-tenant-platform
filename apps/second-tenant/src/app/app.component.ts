@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 't2-root',
-  template: `Second tentant`,
+  template: `<router-outlet></router-outlet>`,
   styles: [],
 })
 export class AppComponent {}

@@ -17,6 +17,7 @@
   },
   "projects": {
     "first-tenant": { "tags": [] },
-    "second-tenant": { "tags": [] }
+    "second-tenant": { "tags": [] },
+    "features-shell": { "tags": [] }
   }
 }

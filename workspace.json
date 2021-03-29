@@ -20,7 +20,9 @@
               "apps/first-tenant/src/favicon.ico",
               "apps/first-tenant/src/assets"
             ],
-            "styles": ["apps/first-tenant/src/styles.scss"],
+            "styles": [
+              "apps/first-tenant/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -55,14 +57,20 @@
         },
         "serve": {
           "executor": "@angular-devkit/build-angular:dev-server",
-          "options": { "browserTarget": "first-tenant:build" },
+          "options": {
+            "browserTarget": "first-tenant:build"
+          },
           "configurations": {
-            "production": { "browserTarget": "first-tenant:build:production" }
+            "production": {
+              "browserTarget": "first-tenant:build:production"
+            }
           }
         },
         "extract-i18n": {
           "executor": "@angular-devkit/build-angular:extract-i18n",
-          "options": { "browserTarget": "first-tenant:build" }
+          "options": {
+            "browserTarget": "first-tenant:build"
+          }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
@@ -75,7 +83,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/first-tenant"],
+          "outputs": [
+            "coverage/apps/first-tenant"
+          ],
           "options": {
             "jestConfig": "apps/first-tenant/jest.config.js",
             "passWithNoTests": true
@@ -102,7 +112,9 @@
               "apps/second-tenant/src/favicon.ico",
               "apps/second-tenant/src/assets"
             ],
-            "styles": ["apps/second-tenant/src/styles.scss"],
+            "styles": [
+              "apps/second-tenant/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -137,14 +149,20 @@
         },
         "serve": {
           "executor": "@angular-devkit/build-angular:dev-server",
-          "options": { "browserTarget": "second-tenant:build" },
+          "options": {
+            "browserTarget": "second-tenant:build"
+          },
           "configurations": {
-            "production": { "browserTarget": "second-tenant:build:production" }
+            "production": {
+              "browserTarget": "second-tenant:build:production"
+            }
           }
         },
         "extract-i18n": {
           "executor": "@angular-devkit/build-angular:extract-i18n",
-          "options": { "browserTarget": "second-tenant:build" }
+          "options": {
+            "browserTarget": "second-tenant:build"
+          }
         },
         "lint": {
           "executor": "@nrwl/linter:eslint",
@@ -157,16 +175,47 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/second-tenant"],
+          "outputs": [
+            "coverage/apps/second-tenant"
+          ],
           "options": {
             "jestConfig": "apps/second-tenant/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
+    },
+    "features-shell": {
+      "projectType": "library",
+      "root": "libs/features/shell",
+      "sourceRoot": "libs/features/shell/src",
+      "prefix": "platform",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/features/shell/src/**/*.ts",
+              "libs/features/shell/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/features/shell"
+          ],
+          "options": {
+            "jestConfig": "libs/features/shell/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
-  "cli": { "defaultCollection": "@nrwl/angular" },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
   "generators": {
     "@nrwl/angular:application": {
       "style": "scss",
@@ -178,9 +227,12 @@
     "@nrwl/angular:library": {
       "style": "scss",
       "linter": "eslint",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "strict": true
     },
-    "@nrwl/angular:component": { "style": "scss" }
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
   },
   "defaultProject": "first-tenant"
 }

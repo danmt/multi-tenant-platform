@@ -10,16 +10,17 @@ jobs:
       matrix:
         include:
           - projectId: 'first-tenant'
-            firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_FIRST_TENANT }}
+            firebaseServiceAccount: 'FIREBASE_SERVICE_ACCOUNT_FIRST_TENANT'
           - projectId: 'second-tenant'
-            firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SECOND_TENANT }}
+            firebaseServiceAccount: 'FIREBASE_SERVICE_ACCOUNT_SECOND_TENANT'
     steps:
       - uses: actions/checkout@v2
-      - run: npm ci && npx nx run-many --all --target=build --parallel
+      - run: npm ci && npx nx build ${{ matrix.projectId }}
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ matrix.firebaseServiceAccount }}'
+          firebaseServiceAccount: '${{ secrets[matrix.firebaseServiceAccount] }}'
           projectId: '${{ matrix.projectId }}'
+          target: '${{ matrix.projectId }}-site'
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels

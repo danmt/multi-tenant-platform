@@ -1,7 +1,22 @@
 {
   "projects": {
-    "default": "first-tenant",
     "first-tenant": "first-tenant",
     "second-tenant": "second-tenant"
+  },
+  "targets": {
+    "first-tenant": {
+      "hosting": {
+        "first-tenant-site": [
+          "first-tenant"
+        ]
+      }
+    },
+    "second-tenant": {
+      "hosting": {
+        "second-tenant-site": [
+          "second-tenant"
+        ]
+      }
+    }
   }
 }

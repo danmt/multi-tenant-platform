@@ -1,13 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'platform-shell',
-  template: ` <p>shell works!</p> `,
-  styles: [],
+  template: `
+    <platform-navigation>
+      <main>
+        <h1>Shell works</h1>
+      </main>
+    </platform-navigation>
+  `,
+  styles: [
+    `
+      main {
+        height: calc(100vh - 64px);
+      }
+    `,
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ShellComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit(): void {}
-}
+export class ShellComponent {}

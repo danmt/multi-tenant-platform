@@ -1,7 +1,8 @@
 {
   "projects": {
     "first-tenant": "first-tenant",
-    "second-tenant": "second-tenant"
+    "second-tenant": "second-tenant",
+    "default": "first-tenant"
   },
   "targets": {
     "first-tenant": {

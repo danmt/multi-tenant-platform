@@ -1,8 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AngularFireFunctions } from '@angular/fire/functions';
 
 @Component({
   selector: 't2-root',
   template: `<router-outlet></router-outlet>`,
   styles: [],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  constructor(private angularFireFunctions: AngularFireFunctions) {}
+
+  ngOnInit() {
+    this.angularFireFunctions.httpsCallable('ping')({}).subscribe();
+  }
+}

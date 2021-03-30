@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "first-tenant-site",
+      "target": "first-tenant",
       "public": "dist/apps/first-tenant",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "target": "second-tenant-site",
+      "target": "second-tenant",
       "public": "dist/apps/second-tenant",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [

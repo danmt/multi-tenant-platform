@@ -19,7 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm ci && npx nx build ${{ matrix.projectId }}
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Deploy site
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets[matrix.firebaseServiceAccount] }}'

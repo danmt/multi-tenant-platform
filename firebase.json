@@ -1,7 +1,7 @@
 {
   "hosting": [
     {
-      "target": "first-tenant",
+      "target": "first-tenant-site",
       "public": "dist/apps/first-tenant",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "target": "second-tenant",
+      "target": "second-tenant-site",
       "public": "dist/apps/second-tenant",
       "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
       "rewrites": [
@@ -32,5 +32,16 @@
   },
   "storage": {
     "rules": "storage.rules"
+  },
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "hosting": {
+      "port": 5000
+    },
+    "ui": {
+      "enabled": true
+    }
   }
 }

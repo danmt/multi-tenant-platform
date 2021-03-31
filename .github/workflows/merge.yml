@@ -13,16 +13,21 @@ jobs:
       matrix:
         include:
           - projectId: 'first-tenant'
+            target: 'first-tenant-site'
             appId: 'first-tenant'
             firebaseServiceAccount: 'FIREBASE_SERVICE_ACCOUNT_FIRST_TENANT'
           - projectId: 'second-tenant'
+            target: 'second-tenant-site'
             appId: 'second-tenant'
             firebaseServiceAccount: 'FIREBASE_SERVICE_ACCOUNT_SECOND_TENANT'
     steps:
       - uses: actions/checkout@v2
-      - run: npm install --only=production && npx nx build ${{ matrix.appId }} --configuration=production
-        env:
-          NODE_ENV: production
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+      - run: |
+          npm install
+          npx nx build ${{ matrix.appId }} --configuration="production"
       - name: Deploy site
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -30,7 +35,7 @@ jobs:
           firebaseServiceAccount: '${{ secrets[matrix.firebaseServiceAccount] }}'
           channelId: live
           projectId: '${{ matrix.projectId }}'
-          target: '${{ matrix.appId }}'
+          target: '${{ matrix.target }}'
         env:
           FIREBASE_CLI_PREVIEWS: hostingchannels
       - name: Install functions dependencies
